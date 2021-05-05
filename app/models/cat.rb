@@ -15,6 +15,10 @@ require 'action_view'
 class Cat < ApplicationRecord
   include ActionView::Helpers::DateHelper
 
+  CAT_COLORS = %w(black white orange brown).freeze
+
+  validates :color, inclusion: CAT_COLORS
+  validates :sex, inclusion: %w(M F)
   validates :name, :birth_date, :color, :sex, presence: true
 
   def age
