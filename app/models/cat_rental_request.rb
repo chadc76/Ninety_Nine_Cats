@@ -16,6 +16,7 @@ class CatRentalRequest < ApplicationRecord
   validates :cat_id, :start_date, :end_date, presence: true
   validates :status, inclusion: STATUS_STATES
   validate :does_not_overlap_approved_request
+  validate :starts_before_end_date
 
   belongs_to :cat,
     primary_key: :id,
@@ -52,6 +53,13 @@ class CatRentalRequest < ApplicationRecord
 
     unless !overlapping_approved_requests.exists?
       errors.add(:base, message: 'Request conflicts with existing approved request')
+    end
+  end
+
+  def starts_before_end_date
+    unless start_date < end_date
+      errors.add(:start_date, message: 'must come before end date')
+      errors.add(:end_date, message: 'must come after start date')
     end
   end
 end
