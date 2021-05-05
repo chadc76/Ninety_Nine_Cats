@@ -18,3 +18,17 @@ Cat.create!(name: "YR", birth_date: "2014/04/15", color: "orange", sex: "M")
 Cat.create!(name: "Forage", birth_date: "2013/01/27", color: "white", sex: "F")
 Cat.create!(name: "Thundercats", birth_date: "2020/11/20", color: "brown", sex: "M")
 Cat.create!(name: "Hella", birth_date: "2017/08/17", color: "brown", sex: "F")
+
+CatRentalRequest.destroy_all
+CatRentalRequest.connection.execute("ALTER SEQUENCE cats_id_seq RESTART WITH 1")
+puts "Creating Cat Rental Requests"
+CatRentalRequest.create!(cat_id: 1, start_date: "2021/5/11", end_date: "2021/5/18", status: "APPROVED")
+CatRentalRequest.create!(cat_id: 2, start_date: "2021/5/11", end_date: "2021/5/18", status: "DENIED")
+CatRentalRequest.create!(cat_id: 3, start_date: "2021/5/11", end_date: "2021/5/18")
+CatRentalRequest.create!(cat_id: 4, start_date: "2021/5/11", end_date: "2021/5/18", status: "APPROVED")
+CatRentalRequest.create!(cat_id: 5, start_date: "2021/5/11", end_date: "2021/5/18", status: "DENIED")
+CatRentalRequest.create!(cat_id: 6, start_date: "2021/5/11", end_date: "2021/5/18")
+CatRentalRequest.create!(cat_id: 7, start_date: "2021/5/11", end_date: "2021/5/18", status: "APPROVED")
+CatRentalRequest.create!(cat_id: 8, start_date: "2021/5/11", end_date: "2021/5/18", status: "DENIED")
+CatRentalRequest.create!(cat_id: 9, start_date: "2021/5/11", end_date: "2021/5/18")
+CatRentalRequest.create!(cat_id: 10, start_date: "2021/5/11", end_date: "2021/5/18", status: "APPROVED")
