@@ -13,7 +13,11 @@ require 'action_view'
 #  updated_at  :datetime         not null
 #
 class Cat < ApplicationRecord
-  ActionView::Helpers::DateHelper
+  include ActionView::Helpers::DateHelper
 
   validates :name, :birth_date, :color, :sex, presence: true
+
+  def age
+    time_ago_in_words(birth_date)
+  end
 end
