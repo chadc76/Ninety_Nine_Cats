@@ -8,7 +8,7 @@ require 'action_view'
 #  birth_date  :date             not null
 #  color       :string           not null
 #  sex         :string(1)        not null
-#  description :text             not null
+#  description :text
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #
@@ -20,6 +20,12 @@ class Cat < ApplicationRecord
   validates :color, inclusion: CAT_COLORS
   validates :sex, inclusion: %w(M F)
   validates :name, :birth_date, :color, :sex, presence: true
+
+  has_many :rental_requests,
+    dependent: :destroy,
+    primary_key: :id,
+    foreign_key: :cat_id,
+    class_name: :CatRentalRequest
 
   def age
     time_ago_in_words(birth_date)
