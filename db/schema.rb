@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 2021_05_05_171344) do
     t.date "birth_date", null: false
     t.string "color", null: false
     t.string "sex", limit: 1, null: false
-    t.text "description", null: false
+    t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
