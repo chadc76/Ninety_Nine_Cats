@@ -13,6 +13,14 @@
 class CatRentalRequest < ApplicationRecord
   validates :status, inclusion: %w(PENDING APPROVED DENIED)
   validates :cat_id, :start_date, :end_date, presence: true
+  after_destroy :log_destroy_action
 
-  
+  belongs_to :cat,
+    primary_key: :id,
+    foreign_key: :cat_id,
+    class_name: :Cat
+
+  def log_destroy_action
+    puts 'Rental Request Destroyed'
+  end
 end
