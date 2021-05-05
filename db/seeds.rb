@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 Cat.destroy_all
-Cat.connection.execute("ALTER SEQUENCE cats_id_seq RESTART WITH 1")
+ApplicationRecord.connection.reset_pk_sequence!('cats')
 puts "Creating Cats"
 Cat.create!(name: "Tattooed", birth_date: "2018/08/06", color: "orange", sex: "F")
 Cat.create!(name: "Fixie", birth_date: "2020/02/06", color: "white", sex: "F")
@@ -20,7 +20,7 @@ Cat.create!(name: "Thundercats", birth_date: "2020/11/20", color: "brown", sex: 
 Cat.create!(name: "Hella", birth_date: "2017/08/17", color: "brown", sex: "F")
 
 CatRentalRequest.destroy_all
-CatRentalRequest.connection.execute("ALTER SEQUENCE cats_id_seq RESTART WITH 1")
+ApplicationRecord.connection.reset_pk_sequence!('cat_rental_requests')
 puts "Creating Cat Rental Requests"
 CatRentalRequest.create!(cat_id: 1, start_date: "2021/5/11", end_date: "2021/5/18", status: "APPROVED")
 CatRentalRequest.create!(cat_id: 2, start_date: "2021/5/11", end_date: "2021/5/18", status: "DENIED")
