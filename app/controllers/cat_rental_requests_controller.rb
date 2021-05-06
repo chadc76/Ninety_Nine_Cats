@@ -1,6 +1,7 @@
 class CatRentalRequestsController < ApplicationController
   def new
     @request = CatRentalRequest.new
+    @cats = Cat.all.sort_by(:id)
     render :new
   end
 
