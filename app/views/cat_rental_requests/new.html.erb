@@ -1,5 +1,7 @@
 <h1>Create Rental Request</h1>
 
+<%= render "shared/errors" %>
+
 <form action="<%= cat_rental_requests_url %>" method="POST">
   <label for="cat_id">Cat</label>
   <select name="cat_rental_request[cat_id]" id="cat_id">

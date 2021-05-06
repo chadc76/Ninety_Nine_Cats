@@ -16,7 +16,12 @@ class CatsController < ApplicationController
 
   def create
     @cat = Cat.new(cat_params)
-    @cat.save ? (redirect_to cat_url(@cat)) : (render :new)
+    if @cat.save 
+      redirect_to cat_url(@cat)
+    else
+      flash.now[:errors] = @cat.errors.full_messages
+      render :new
+    end
   end
 
   def edit
@@ -26,7 +31,12 @@ class CatsController < ApplicationController
 
   def update
     @cat = Cat.find_by(id: params[:id])
-    @cat.update(cat_params) ? (redirect_to cat_url(@cat)) : (render :edit)
+    if @cat.update(cat_params) 
+      redirect_to cat_url(@cat)
+    else 
+      flash.now[:errors] = @cat.errors.full_messages
+      render :edit
+    end
   end
 
   private
