@@ -6,7 +6,7 @@ class CatsController < ApplicationController
 
   def show
     @cat = Cat.find_by(id: params[:id])
-    @columns = Cat.column_names.select{|name| !["name", "updated_at", "created_at", "description"].include?(name)}
+    @columns = Cat.column_names.select{|name| !["id", "name", "updated_at", "created_at", "description"].include?(name)}
     render :show
   end
 
