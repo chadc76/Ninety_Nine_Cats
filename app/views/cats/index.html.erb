@@ -1,5 +1,15 @@
-<h2>All Of The Cats</h2>
+<section class="cat-index-holder">
+  <nav>
+    <h1>All Of THE CATS IN THE WORLD</h1>
+    <a href="<%= new_cat_url %>">
+      
+            ADD CAT     
+      <i class="fas fa-plus" aria-hidden="true"></i>
+    </a>
+  </nav>
 
-<ul>
-  <%= render @cats %>
-</ul>
+  <section class="cat-index">
+    <%= render @cats %>
+  </section>
+</section>
+

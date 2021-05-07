@@ -1,0 +1,35 @@
+.cat-index-holder {
+  margin: 50px auto;
+  width: 920px;
+  background-color: #009999;
+}
+
+.fas {
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+.fa-plus::before {
+  content: "\f067";
+}
+
+.cat-index {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.cat-index-item {
+  padding: 20px;
+  margin: 20px 0;
+  width: 235px;
+  height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #000066;
+}
