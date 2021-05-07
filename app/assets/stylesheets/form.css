@@ -1,0 +1,24 @@
+input[type="submit"] {
+  font-weight: bold;
+}
+
+label {
+  font-weight: bold;
+  margin: 15px 0px;
+}
+
+textarea, select, input {
+  font-family: "Amatic SC", cursive;
+  background-color: inherit;
+  border: 0;
+  border-bottom: 5px solid yellow;
+  font-size: 30px;
+  margin: 5px 10px;
+}
+
+textarea {
+  display: block;
+  margin: auto;
+  width: 300px;
+  background-color: white;
+}

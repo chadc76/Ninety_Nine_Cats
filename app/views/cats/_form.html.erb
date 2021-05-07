@@ -22,7 +22,7 @@
   <label for="cat_color">Color </label>
   <select name="cat[color]" id="cat_color">
     <option 
-      disabled <%= cat.color ? "" : "selected" %>>--select a color--</option>
+      disabled <%= cat.color ? "" : "selected" %>></option>
     <% Cat::CAT_COLORS.each do |color| %>
       <option value="<%= color %>" <%= cat.color ? "selected" : "" %>
         ><%= color.upcase %>
@@ -49,11 +49,9 @@
 
   <br>
 
-  <label for="cat_description">Description</label>
-  <textarea 
-    name="cat[description]" 
-    id="cat_description"
-    ><%= cat.description %></textarea>
+  <label>Description
+    <textarea name="cat[description]" spellcheck="false"><%= cat.description %></textarea>
+  </label> 
 
   <br>
 
