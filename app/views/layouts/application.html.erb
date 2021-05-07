@@ -6,10 +6,26 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap" rel="stylesheet">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'reset' %>
+    <%= stylesheet_link_tag 'header' %>
   </head>
 
   <body>
-    <%= yield %>
+    <nav class="main-nav">
+      <h1>
+        <a href="<%= cats_url %>">99 CATS</a>
+      </h1>
+      <div>
+        <a href="#">SIGN IN</a>
+        <a href="#">SIGN UP</a>
+      </div>
+    </nav>
+
+    <main>
+      <%= yield %>
+    </main>
   </body>
 </html>
