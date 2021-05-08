@@ -24,9 +24,11 @@
 
     <br>
     
-    <a class="edit" href="<%= edit_cat_url(@cat) %>">Edit <%= @cat.name %></a>
+    <form action="<%= edit_cat_url(@cat) %>">
+      <input type="submit" value="Edit <%= @cat.name %>">
+    </form>
     
-    <br><br>
+    <br>
     
     <h1>Rental Requests</h1>
     <table>
@@ -41,5 +43,12 @@
         <% end %>
       </tbody>
     </table>
+
+    <br>
+
+    <form action="<%= new_cat_rental_request_url %>">
+      <input type="hidden" name="id" value="<%= @cat.id %>">
+      <input type="submit" value="Rent <%= @cat.name %>">
+    </form>
   </div>
 </section>

@@ -1,6 +1,7 @@
 class CatRentalRequestsController < ApplicationController
   def new
     @request = CatRentalRequest.new
+    @request.cat_id = params[:id]
     render :new
   end
 
