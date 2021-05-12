@@ -11,5 +11,7 @@ Rails.application.routes.draw do
 
   resources :users, only: %i(new create)
 
-  root to: cats_url
+  resource :session, only: %i(new create destroy)
+
+  root to: 'cats#index'
 end
