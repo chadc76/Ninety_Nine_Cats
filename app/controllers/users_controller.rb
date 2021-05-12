@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def create
-    @user = User.find_by(user_params)
+    @user = User.new(user_params)
     if @user.save
       redirect_to cats_url
     else
@@ -11,5 +11,11 @@ class UsersController < ApplicationController
 
   def new
     render :new
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:username, :password)
   end
 end
