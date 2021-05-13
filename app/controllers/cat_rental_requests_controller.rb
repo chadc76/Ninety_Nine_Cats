@@ -1,4 +1,6 @@
 class CatRentalRequestsController < ApplicationController
+  before_action :is_owner?, only: [:approve, :deny]
+
   def new
     @request = CatRentalRequest.new
     @request.cat_id = params[:id]
