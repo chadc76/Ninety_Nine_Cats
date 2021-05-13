@@ -24,10 +24,13 @@
 
     <br>
     
-    <form action="<%= edit_cat_url(@cat) %>">
-      <input type="submit" value="Edit <%= @cat.name %>">
-    </form>
+    <% if @cat.user_id == current_user.id %>
+      <form action="<%= edit_cat_url(@cat) %>">
+        <input type="submit" value="Edit <%= @cat.name %>">
+      </form>
+    <% end %>
     
+    <%= render 'shared/errors' %>
     <br>
     
     <h1>Rental Requests</h1>
