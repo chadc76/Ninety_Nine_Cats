@@ -34,6 +34,21 @@ class User < ApplicationRecord
     foreign_key: :user_id,
     class_name: :Cat
 
+  has_many :requests_to_rent,
+    dependent: :destroy,
+    primary_key: :id, 
+    foreign_key: :user_id,
+    class_name: :CatRentalRequest
+
+  has_many :rental_requests,
+    through: :cats,
+    source: :rental_requests
+
+  def pending_rental_requests
+    requests_to_rent
+      .where("status LIKE ?", "PENDING")
+  end
+
   def reset_session_token!
     self.session_token = self.class.generate_session_token
     self.save
