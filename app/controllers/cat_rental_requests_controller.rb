@@ -9,6 +9,7 @@ class CatRentalRequestsController < ApplicationController
 
   def create
     @request = CatRentalRequest.new(cat_rental_request_params)
+    @request.user_id = current_user.id
     if @request.save 
       redirect_to cat_url(@request.cat_id)
     else
@@ -32,7 +33,7 @@ class CatRentalRequestsController < ApplicationController
   def current_cat_rental_request
     @request ||= CatRentalRequest.includes(:cat).find(params[:id])
   end
-  
+
   def current_cat
     current_cat_rental_request.cat
   end
