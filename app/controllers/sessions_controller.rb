@@ -19,4 +19,10 @@ class SessionsController < ApplicationController
     render :new
   end
 
+  def destroy
+    return if !current_user
+    current_user.reset_session_token!
+    session[:session_token] = nil
+  end
+
 end
