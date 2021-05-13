@@ -8,6 +8,8 @@
 
 User.destroy_all
 ApplicationRecord.connection.reset_pk_sequence!('users')
+ApplicationRecord.connection.reset_pk_sequence!('session_tokens')
+ApplicationRecord.connection.reset_pk_sequence!('user_sessions')
 puts "Creating Users"
 User.create!(username: "Houdini", password: "i_like_kiki" )
 User.create!(username: "houdini", password: "i_love_kiki")
