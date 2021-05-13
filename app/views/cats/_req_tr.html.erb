@@ -1,4 +1,5 @@
 <tr>
+  <td><%= req.renter.username %></td>
   <td><%= req.start_date %></td>
   <td><%= req.end_date %></td>
   <td>
@@ -17,7 +18,7 @@
         type="hidden" 
         name="authenticity_token"
         value="<%= form_authenticity_token %>">
-        
+
         <input type="submit" value="Deny!">
       </form>
     <% else %>

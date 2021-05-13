@@ -23,7 +23,7 @@
     </table>
 
     <br>
-    
+
     <% if @cat.user_id == current_user.id %>
       <form action="<%= edit_cat_url(@cat) %>">
         <input type="submit" value="Edit <%= @cat.name %>">
@@ -37,6 +37,7 @@
     <table>
       <tbody>
         <tr>
+          <th>User</th>
           <th>Start Date</th>
           <th>End Date</th>
           <th>Status</th>
