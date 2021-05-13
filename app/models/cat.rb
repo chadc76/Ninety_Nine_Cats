@@ -11,7 +11,7 @@ require 'action_view'
 #  description :text
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
-#  owner_id    :integer          not null
+#  user_id     :integer          not null
 #
 class Cat < ApplicationRecord
   include ActionView::Helpers::DateHelper
@@ -27,6 +27,11 @@ class Cat < ApplicationRecord
     primary_key: :id,
     foreign_key: :cat_id,
     class_name: :CatRentalRequest
+
+  # belongs_to :owner,
+  #   primary_key: :id,
+  #   foreign_key: :owner_id,
+  #   class_name: :Users
 
   def age
     time_ago_in_words(birth_date)
