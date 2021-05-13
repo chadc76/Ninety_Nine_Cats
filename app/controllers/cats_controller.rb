@@ -2,7 +2,7 @@ class CatsController < ApplicationController
   before_action :require_current_user!, except: [:index, :show]
   before_action :is_owner?, only: [:edit, :update]
   def index
-    @cats = Cat.all
+    @cats = Cat.all.sort_by(&:id)
     render :index
   end
 
