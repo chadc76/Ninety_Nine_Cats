@@ -23,10 +23,14 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    return if !current_user
+    if !current_user
+      redirect_to cats_url
+      return
+    end
+    
     current_user.reset_session_token!
     session[:session_token] = nil
-    redirect_to root_url
+    redirect_to cats_url
   end
 
 end
