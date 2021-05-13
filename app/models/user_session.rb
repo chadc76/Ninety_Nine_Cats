@@ -15,7 +15,7 @@ class UserSession < ApplicationRecord
     foreign_key: :user_id,
     class_name: :User
     
-  has_many :sessions,
+  has_many :tokens,
     dependent: :destroy,
     primary_key: :id,
     foreign_key: :user_sessions_table_id,
