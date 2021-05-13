@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_13_212907) do
+ActiveRecord::Schema.define(version: 2021_05_13_213822) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,20 +39,20 @@ ActiveRecord::Schema.define(version: 2021_05_13_212907) do
     t.index ["user_id"], name: "index_cats_on_user_id"
   end
 
-  create_table "sessions", force: :cascade do |t|
+  create_table "session_tokens", force: :cascade do |t|
     t.integer "user_sessions_table_id", null: false
     t.string "session", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["session"], name: "index_sessions_on_session", unique: true
-    t.index ["user_sessions_table_id"], name: "index_sessions_on_user_sessions_table_id"
+    t.index ["session"], name: "index_session_tokens_on_session", unique: true
+    t.index ["user_sessions_table_id"], name: "index_session_tokens_on_user_sessions_table_id"
   end
 
   create_table "user_sessions", force: :cascade do |t|
     t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_user_sessions_on_user_id"
+    t.index ["user_id"], name: "index_user_sessions_on_user_id", unique: true
   end
 
   create_table "users", force: :cascade do |t|

@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: sessions
+# Table name: session_tokens
 #
 #  id                     :bigint           not null, primary key
 #  user_sessions_table_id :integer          not null
