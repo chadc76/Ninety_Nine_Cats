@@ -11,6 +11,7 @@ require 'action_view'
 #  description :text
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  owner_id    :integer          not null
 #
 class Cat < ApplicationRecord
   include ActionView::Helpers::DateHelper
