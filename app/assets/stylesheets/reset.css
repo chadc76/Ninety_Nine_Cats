@@ -58,6 +58,18 @@ input[type="submit"] {
   cursor: pointer;
 }
 
+li input[type="submit"] {
+  color: yellow;
+}
+
+nav div ul {
+  display: flex;
+}
+
+.login_label {
+  padding-top: 7px;
+}
+
 .group::after {
   content: "";
   display: block;
