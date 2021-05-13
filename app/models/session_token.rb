@@ -4,13 +4,13 @@
 #
 #  id                     :bigint           not null, primary key
 #  user_sessions_table_id :integer          not null
-#  session                :string           not null
+#  token                  :string           not null
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #
 class SessionToken < ApplicationRecord
-  validates :user_sessions_table_id, :session, presence: true
-  validates :session, uniqueness: true
+  validates :user_sessions_table_id, :token, presence: true
+  validates :token, uniqueness: true
 
   belongs_to :session_table,
     primary_key: :id,
