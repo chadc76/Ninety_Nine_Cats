@@ -14,7 +14,7 @@
 class CatRentalRequest < ApplicationRecord
   STATUS_STATES = %w(APPROVED DENIED PENDING).freeze
 
-  validates :cat_id, :start_date, :end_date, :status, presence: true
+  validates :cat_id, :start_date, :end_date, :status, :user_id, presence: true
   validates :status, inclusion: STATUS_STATES
   validate :start_must_come_before_end
   validate :does_not_overlap_approved_request
@@ -23,6 +23,11 @@ class CatRentalRequest < ApplicationRecord
     primary_key: :id,
     foreign_key: :cat_id,
     class_name: :Cat
+
+  belongs_to :renter,
+    primary_key: :id, 
+    foreign_key: :user_id,
+    class_name: :User
 
   after_initialize :assign_pending_status
 
