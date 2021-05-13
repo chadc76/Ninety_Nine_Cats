@@ -28,10 +28,10 @@ class Cat < ApplicationRecord
     foreign_key: :cat_id,
     class_name: :CatRentalRequest
 
-  # belongs_to :owner,
-  #   primary_key: :id,
-  #   foreign_key: :owner_id,
-  #   class_name: :Users
+  belongs_to :owner,
+    primary_key: :id,
+    foreign_key: :user_id,
+    class_name: :User
 
   def age
     time_ago_in_words(birth_date)
