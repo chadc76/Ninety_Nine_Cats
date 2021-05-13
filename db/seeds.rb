@@ -5,6 +5,16 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+User.destroy_all
+ApplicationRecord.connection.reset_pk_sequence!('users')
+puts "Creating Users"
+User.create!(username: "Houdini", password: "i_like_kiki" )
+User.create!(username: "houdini", password: "i_love_kiki")
+User.create!(username: "Drake", password: "OnlyLoveMyBedAndMyMomma")
+User.create!(username: "Lil_Wayne", password: "YoungMoolaBaby")
+User.create!(username: "Chance_The_Rapper", password: "TheBigDay")
+
 Cat.destroy_all
 ApplicationRecord.connection.reset_pk_sequence!('cats')
 puts "Creating Cats"
@@ -22,22 +32,13 @@ Cat.create!(user_id: 5, name: "Hella", birth_date: "2017/08/17", color: "brown",
 CatRentalRequest.destroy_all
 ApplicationRecord.connection.reset_pk_sequence!('cat_rental_requests')
 puts "Creating Cat Rental Requests"
-CatRentalRequest.create!(cat_id: 1, start_date: "2021/5/11", end_date: "2021/5/18", status: "APPROVED")
-CatRentalRequest.create!(cat_id: 2, start_date: "2021/5/11", end_date: "2021/5/18", status: "DENIED")
-CatRentalRequest.create!(cat_id: 3, start_date: "2021/5/11", end_date: "2021/5/18", status: "PENDING")
-CatRentalRequest.create!(cat_id: 4, start_date: "2021/5/11", end_date: "2021/5/18", status: "APPROVED")
-CatRentalRequest.create!(cat_id: 5, start_date: "2021/5/11", end_date: "2021/5/18", status: "DENIED")
-CatRentalRequest.create!(cat_id: 6, start_date: "2021/5/11", end_date: "2021/5/18", status: "PENDING")
-CatRentalRequest.create!(cat_id: 7, start_date: "2021/5/11", end_date: "2021/5/18", status: "APPROVED")
-CatRentalRequest.create!(cat_id: 8, start_date: "2021/5/11", end_date: "2021/5/18", status: "DENIED")
-CatRentalRequest.create!(cat_id: 9, start_date: "2021/5/11", end_date: "2021/5/18", status: "PENDING")
-CatRentalRequest.create!(cat_id: 10, start_date: "2021/5/11", end_date: "2021/5/18", status: "APPROVED")
-
-User.destroy_all
-ApplicationRecord.connection.reset_pk_sequence!('users')
-puts "Creating Users"
-User.create!(username: "Houdini", password: "i_like_kiki" )
-User.create!(username: "houdini", password: "i_love_kiki")
-User.create!(username: "Drake", password: "OnlyLoveMyBedAndMyMomma")
-User.create!(username: "Lil_Wayne", password: "YoungMoolaBaby")
-User.create!(username: "Chance_The_Rapper", password: "TheBigDay")
+CatRentalRequest.create!(user_id: 5, cat_id: 1, start_date: "2021/5/11", end_date: "2021/5/18", status: "APPROVED")
+CatRentalRequest.create!(user_id: 5, cat_id: 2, start_date: "2021/5/11", end_date: "2021/5/18", status: "DENIED")
+CatRentalRequest.create!(user_id: 4, cat_id: 3, start_date: "2021/5/11", end_date: "2021/5/18", status: "PENDING")
+CatRentalRequest.create!(user_id: 4, cat_id: 4, start_date: "2021/5/11", end_date: "2021/5/18", status: "APPROVED")
+CatRentalRequest.create!(user_id: 2, cat_id: 5, start_date: "2021/5/11", end_date: "2021/5/18", status: "DENIED")
+CatRentalRequest.create!(user_id: 2, cat_id: 6, start_date: "2021/5/11", end_date: "2021/5/18", status: "PENDING")
+CatRentalRequest.create!(user_id: 3, cat_id: 7, start_date: "2021/5/11", end_date: "2021/5/18", status: "APPROVED")
+CatRentalRequest.create!(user_id: 3, cat_id: 8, start_date: "2021/5/11", end_date: "2021/5/18", status: "DENIED")
+CatRentalRequest.create!(user_id: 1, cat_id: 9, start_date: "2021/5/11", end_date: "2021/5/18", status: "PENDING")
+CatRentalRequest.create!(user_id: 1, cat_id: 10, start_date: "2021/5/11", end_date: "2021/5/18", status: "APPROVED")
