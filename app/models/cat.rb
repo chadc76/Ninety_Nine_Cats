@@ -20,7 +20,7 @@ class Cat < ApplicationRecord
 
   validates :color, inclusion: CAT_COLORS
   validates :sex, inclusion: %w(M F)
-  validates :name, :birth_date, :color, :sex, presence: true
+  validates :name, :birth_date, :color, :sex, :user_id, presence: true
 
   has_many :rental_requests,
     dependent: :destroy,
