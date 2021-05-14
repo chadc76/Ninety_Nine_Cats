@@ -5,7 +5,7 @@ module ApplicationHelper
   end
 
   def session_env(token)
-    html = token.token == session[:session_token] ? "<td>This Device</td>" : "<td>h(token.env)</td>"
+    html = token.token == session[:session_token] ? "<td>This Device</td>" : "<td>#{h(token.env)}</td>"
     html.html_safe
   end
 
