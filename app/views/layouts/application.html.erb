@@ -23,7 +23,9 @@
       <div>
         <% if !current_user.nil? %>
           <ul>
-            <li class="login_label"><a href="<%= user_url(current_user) %>"><%= current_user.username %></a></li>
+            <li class="login_label">
+              <%= link_to currnt_user.username, user_url(current_user) %>
+            </li>
             <li>
               <% token = SessionToken.find_by(token: session[:session_token]) %>
               <%= button_to "LOG OUT", session_url(token), method: :delete %>
