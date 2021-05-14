@@ -2,12 +2,22 @@ class ApplicationController < ActionController::Base
   helper_method :current_user, :current_cat
   
   def current_user
-    @current_user ||= User.find_by(session_token: session[:session_token])
+    @current_user ||= User.find_by_session_token(session[:session_token])
   end
 
   def login!(user)
     @current_user = user
-    session[:session_token] = user.session_token
+
+    if session[:session_token].nil?
+      @current_user.generate_session_token
+      session[:session_token] = user.session_tokens.last.token
+    end
+  end
+
+  def logout!
+    current_user.destroy_session_token!(session[:session_token])
+    @current_user = nil
+    session[:session_token] = nil
   end
 
   def current_user?

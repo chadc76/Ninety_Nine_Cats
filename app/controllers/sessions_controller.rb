@@ -27,9 +27,8 @@ class SessionsController < ApplicationController
       redirect_to cats_url
       return
     end
-    
-    current_user.reset_session_token!
-    session[:session_token] = nil
+
+    logout!
     redirect_to cats_url
   end
 
