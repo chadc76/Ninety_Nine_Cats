@@ -12,11 +12,7 @@
         </tr>
         <% current_user.session_tokens.each do |token| %>
           <tr>
-            <% if token.token == session[:session_token] %>
-              <td>This Device</td>
-            <% else %>
-              <td><%= token.env %></td>
-            <% end %>
+            <%= session_env(token) %>
             <td><%= token.location %></td>
             <td><%= button_to "Log out", session_url(token), method: :delete %></td>
           </tr>
