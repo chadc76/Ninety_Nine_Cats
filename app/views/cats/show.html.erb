@@ -18,11 +18,11 @@
             <td><%= attr_name %></td>
             <td><%= @cat.send(attr_name) %></td>
           </tr>
+          <% end %>
           <tr>
             <td>Owner</td>
             <td><%= @cat.owner.username %></td>
           </tr>
-        <% end %>
       </tbody>
     </table>
 
