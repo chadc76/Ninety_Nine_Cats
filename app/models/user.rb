@@ -24,6 +24,11 @@ class User < ApplicationRecord
     user.is_password?(pw) ? user : nil
   end
 
+  def self.find_by_session_token(session_token)
+    token = SessionToken.find_by(token: session_token)
+    user = token ? token.user : nil
+  end
+
   def generate_user_sessions_table
     user_session_table = UserSession.create!(user_id: self.id)
     self.user_sessions_id = user_session_table.id
@@ -68,11 +73,8 @@ class User < ApplicationRecord
       .where("status LIKE ?", "PENDING")
   end
 
-  def reset_session_token!(token)
-    self.session_tokens.where("token LIKE ?", token).destroy
-    generate_session_token
-    self.save
-    self.session_tokens.last
+  def destroy_session_token!(token)
+    self.session_tokens.where("token LIKE ?", token).first.destroy
   end
 
   def password=(pw)
