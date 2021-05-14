@@ -18,16 +18,7 @@
               <td><%= token.env %></td>
             <% end %>
             <td><%= token.location %></td>
-            <td>
-              <form action="<%= session_url(token) %>" method="post">
-                <input type="hidden" name="_method" value="delete">
-                <input 
-                  type="hidden" 
-                  name="authenticity_token" 
-                  value="<%= form_authenticity_token %>">
-                <input type="submit" value="Log out">
-              </form>
-            </td>
+            <td><%= button_to "Log out", session_url(token), method: :delete %></td>
           </tr>
         <% end %>
       </tbody>

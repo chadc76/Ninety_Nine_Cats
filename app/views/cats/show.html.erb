@@ -28,11 +28,7 @@
 
     <br>
 
-    <% if current_user && @cat.user_id == current_user.id %>
-      <form action="<%= edit_cat_url(@cat) %>">
-        <input type="submit" value="Edit <%= @cat.name %>">
-      </form>
-    <% end %>
+    <%= edit_button %>
     
     <%= render 'shared/errors' %>
     <br>
@@ -54,9 +50,7 @@
 
     <br>
 
-    <form action="<%= new_cat_rental_request_url %>">
-      <input type="hidden" name="id" value="<%= @cat.id %>">
-      <input type="submit" value="Rent <%= @cat.name %>">
-    </form>
+    <%= button_to "Rent " + @cat.name, new_cat_rental_request_url, method: :get, 
+      params: { id: @cat.id } %>
   </div>
 </section>

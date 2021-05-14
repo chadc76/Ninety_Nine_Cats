@@ -4,23 +4,8 @@
   <td><%= req.end_date %></td>
   <td>
     <% if current_user && req.pending? && current_cat.owner.id == current_user.id %>
-      <form action="<%= approve_cat_rental_request_url(req) %>" method="post">
-        <input 
-        type="hidden" 
-        name="authenticity_token"
-        value="<%= form_authenticity_token %>">
-
-        <input type="submit" value="Approve!">
-      </form>
-
-      <form action="<%= deny_cat_rental_request_url(req) %>" method="post">
-        <input 
-        type="hidden" 
-        name="authenticity_token"
-        value="<%= form_authenticity_token %>">
-
-        <input type="submit" value="Deny!">
-      </form>
+      <%= button_to "Approve!", approve_cat_rental_request_url(req) %>
+      <%= button_to "Deny!", deny_cat_rental_request_url(req) %>
     <% else %>
       <%= req.status %>
     <% end %>
