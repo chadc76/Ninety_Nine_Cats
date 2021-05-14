@@ -24,7 +24,7 @@
         <% if !current_user.nil? %>
           <ul>
             <li class="login_label">
-              <%= link_to currnt_user.username, user_url(current_user) %>
+              <%= link_to current_user.username, user_url(current_user) %>
             </li>
             <li>
               <% token = SessionToken.find_by(token: session[:session_token]) %>
