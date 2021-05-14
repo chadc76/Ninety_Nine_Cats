@@ -31,7 +31,11 @@ class SessionsController < ApplicationController
 
     session_token = SessionToken.find_by(id: params[:id]).token
     logout!(session_token)
-    redirect_to cats_url
+    if session[:session_token]
+      redirect_to user_url(current_user)
+    else
+      redirect_to new_session_url
+    end
   end
 
 end
