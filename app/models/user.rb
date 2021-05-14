@@ -33,12 +33,15 @@ class User < ApplicationRecord
     user_session_table = UserSession.create!(user_id: self.id)
     self.user_sessions_id = user_session_table.id
     self.save!
-    generate_session_token
     user_session_table
   end
  
-  def generate_session_token
-    SessionToken.create!(user_sessions_table_id: self.user_sessions_id, token: SecureRandom::urlsafe_base64(16))
+  def generate_session_token(device = "desktop", location = "")
+    SessionToken.create!(
+      user_sessions_table_id: self.user_sessions_id, 
+      token: SecureRandom::urlsafe_base64(16),
+       env: device,
+       location: location)
   end
 
   has_many :cats,

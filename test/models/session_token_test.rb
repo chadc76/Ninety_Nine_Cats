@@ -7,6 +7,8 @@
 #  token                  :string           not null
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  env                    :string
+#  location               :string
 #
 require "test_helper"
 

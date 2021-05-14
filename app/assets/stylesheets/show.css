@@ -25,3 +25,9 @@ th {
 .edit {
   color: black;
 }
+
+.profile-pic {
+  width: 60%;
+  height: 60%;
+  max-height: 300px;
+}

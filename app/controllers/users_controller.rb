@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
-  before_action :current_user?
+  before_action :current_user?, except: [:show]
+  before_action :require_current_user!, only: [:show]
+  before_action :is_current_user?, only: [:show]
 
   def create
     @user = User.new(user_params)
@@ -14,6 +16,11 @@ class UsersController < ApplicationController
 
   def new
     render :new
+  end
+
+  def show
+    # fail
+    render :show
   end
 
   private

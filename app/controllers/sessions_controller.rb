@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
   before_action :current_user?, except: [:destroy]
+  before_action :require_current_user!, only: [:destroy]
 
   def create
     user = User.find_by_credentials(
@@ -28,7 +29,8 @@ class SessionsController < ApplicationController
       return
     end
 
-    logout!
+    session_token = SessionToken.find_by(id: params[:id]).token
+    logout!(session_token)
     redirect_to cats_url
   end
 

@@ -25,9 +25,10 @@
       <div>
         <% if !current_user.nil? %>
           <ul>
-            <li class="login_label"><%= current_user.username %></li>
+            <li class="login_label"><a href="<%= user_url(current_user) %>"><%= current_user.username %></a></li>
             <li>
-              <form action="<%= session_url %>" method="post">
+              <% token = SessionToken.find_by(token: session[:session_token]) %>
+              <form action="<%= session_url(token) %>" method="post">
                 <input type="hidden" name="_method" value="delete">
                 <input 
                 type="hidden" 

@@ -1,0 +1,36 @@
+<section class="page">
+  <div class="centered-box">
+    <img class="profile-pic" src="https://zultimate.com/wp-content/uploads/2019/12/default-profile.png">
+    <h1><%= current_user.username.upcase %></h1>
+
+    <table>
+      <tbody>
+        <tr>
+          <th>Enviroment</th>
+          <th>Location</th>
+          <th>Logout</th>
+        </tr>
+        <% current_user.session_tokens.each do |token| %>
+          <tr>
+            <% if token.token == session[:session_token] %>
+              <td>This Device</td>
+            <% else %>
+              <td><%= token.env %></td>
+            <% end %>
+            <td><%= token.location %></td>
+            <td>
+              <form action="<%= session_url(token) %>" method="post">
+                <input type="hidden" name="_method" value="delete">
+                <input 
+                  type="hidden" 
+                  name="authenticity_token" 
+                  value="<%= form_authenticity_token %>">
+                <input type="submit" value="Log out">
+              </form>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</section>
