@@ -3,7 +3,7 @@
   <td><%= req.start_date %></td>
   <td><%= req.end_date %></td>
   <td>
-    <% if current_user && req.pending? && current_cat.owner.id == current_user.id %>
+    <% if req.pending? && current_cat.owner == current_user %>
       <%= button_to "Approve!", approve_cat_rental_request_url(req) %>
       <%= button_to "Deny!", deny_cat_rental_request_url(req) %>
     <% else %>
