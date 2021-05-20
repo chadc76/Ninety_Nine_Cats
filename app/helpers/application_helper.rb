@@ -12,4 +12,8 @@ module ApplicationHelper
   def cat_owner?
     @cat.owner == current_user
   end
+
+  def auth_token
+    "<input type=\"hidden\" name=\"authenticity_token\" value=\"#{form_authenticity_token}\"/>".html_safe
+  end
 end
