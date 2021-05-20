@@ -6,3 +6,7 @@
     <%= render 'form', cat: @cat %>
   </div>
 </section>
+
+<% content_for :footer do %>
+  <p>This is the edit page for <%= @cat.name %>.</p>
+<% end %>

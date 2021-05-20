@@ -54,3 +54,7 @@
       params: { id: @cat.id } %>
   </div>
 </section>
+
+<% content_for :footer do %>
+  <p>This is the show page for <%= @cat.name %>.</p>
+<% end %>

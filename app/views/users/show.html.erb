@@ -21,3 +21,7 @@
     </table>
   </div>
 </section>
+
+<% content_for :footer do %>
+  <p>This is the profile page for <%= current_user.username %></p>
+<% end %>
