@@ -14,7 +14,6 @@ module NinetyNineCats
     # Configuration for the application, engines, and railties goes here.
     initializer(:remove_action_mailbox_and_activestorage_routes, after: :add_routing_paths) { |app|
     app.routes_reloader.paths.delete_if {|path| path =~ /activestorage/}
-    app.routes_reloader.paths.delete_if {|path| path =~ /actionmailbox/ }
     }
     # These settings can be overridden in specific environments using the files
     # in config/environments, which are processed later.
